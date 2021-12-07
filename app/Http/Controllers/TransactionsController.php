@@ -46,7 +46,7 @@ class TransactionsController extends Controller
     public function stock_in_store(Request $request)
     {   
         $information = Information::where('information_id', $request->category)->first();
-        $transaction = Transactions::orderBy('id', 'Desc')->first();
+        // $transaction = Transactions::orderBy('id', 'Desc')->first();
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,HEIC|max:2048',
@@ -59,7 +59,7 @@ class TransactionsController extends Controller
         $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
         $request->invoice->move(public_path('pdf/invoices'), $pdfname);
 
-        $total = $transaction->id + 1;
+        // $total = $transaction->id + 1;
 
         Transactions::create([
             'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
@@ -140,8 +140,8 @@ class TransactionsController extends Controller
 
         }else {
 
-            $transaction = Transactions::orderBy('id', 'Desc')->first();
-            $total = $transaction->id + 1;
+            // $transaction = Transactions::orderBy('id', 'Desc')->first();
+            // $total = $transaction->id + 1;
 
             Transactions::create([
                 'tracking_id' => $stock_out->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'OUT',
@@ -220,8 +220,8 @@ class TransactionsController extends Controller
     public function stock_return_store(Request $request)
     {
         $information = Information::where('information_id', $request->category)->first();
-        $transaction = Transactions::orderBy('id', 'Desc')->first();
-        $total = $transaction->id + 1;
+        // $transaction = Transactions::orderBy('id', 'Desc')->first();
+        // $total = $transaction->id + 1;
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
