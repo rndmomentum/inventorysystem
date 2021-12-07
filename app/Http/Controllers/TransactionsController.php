@@ -62,7 +62,7 @@ class TransactionsController extends Controller
         $total = $transaction->id + 1;
 
         Transactions::create([
-            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'IN',
+            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
             // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
             'name' => $request->name,
             'category_id' => $request->category,
@@ -144,7 +144,7 @@ class TransactionsController extends Controller
             $total = $transaction->id + 1;
 
             Transactions::create([
-                'tracking_id' => $stock_out->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'OUT',
+                'tracking_id' => $stock_out->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'OUT',
                 'name' => $stock_out->name,
                 'category_id' => $stock_out->category_id,
                 'location_id' => $stock_out->location_id,
@@ -232,7 +232,7 @@ class TransactionsController extends Controller
 
 
         Transactions::create([
-            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'RETURN',
+            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'RETURN',
             'name' => $request->name,
             'category_id' => $request->category,
             'location_id' => 0,
