@@ -25,6 +25,7 @@ class Transactions extends Model
         'type_transaction',
         'purpose',
         'stock_in_id',
-        'short_code'
+        'stock_status',
+        'short_code',
     ];
 }

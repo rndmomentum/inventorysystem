@@ -63,7 +63,13 @@
                             <tr>
                                 <td>{{ $value->tracking_id }}</td>
                                 <td>{{ $value->name }}</td>
-                                <td>{{ $value->total_stock }}</td>
+                                <td>
+                                    @if($value->total_stock <= $value->minimum_stock)
+                                        <span class="text-danger fw-bold">{{ $value->total_stock }}</span>
+                                    @else
+                                        {{ $value->total_stock }}
+                                    @endif
+                                </td>
                                 <td>{{ $value->minimum_stock }}</td> 
                                 <td>{{ Carbon\Carbon::parse($value->updated_at)->toDateString() }}</td>
                                 <td>            

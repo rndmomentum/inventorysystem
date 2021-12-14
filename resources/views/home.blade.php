@@ -12,6 +12,18 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if($transactions_low->isEmpty())
+
+        @else
+            <div class="col-md-12 mb-3">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong><i class="fas fa-exclamation-triangle"></i> Please Check Your Stock!</strong> Your stock has reached the minimum amount, please place an order immediately!
+                    <br><br>
+                    <a href="{{ url('transaction/stockin/list') }}" class="btn btn-warning btn-sm">Check Now <i class="fas fa-arrow-right"></i></a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
         <div class="col-md-12 mb-3">
             <h4>Reports</h4>
             <hr>

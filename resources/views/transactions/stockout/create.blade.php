@@ -68,7 +68,13 @@
                             <tr>
                                 <td>{{ $value->tracking_id }}</td>
                                 <td>{{ $value->name }}</td>
-                                <td>{{ $value->total_stock }}</td>
+                                <td>
+                                    @if($value->total_stock <= $value->minimum_stock)
+                                        <span class="text-danger fw-bold">{{ $value->total_stock }}</span>
+                                    @else
+                                        {{ $value->total_stock }}
+                                    @endif
+                                </td>
                                 <td>{{ $value->minimum_stock }}</td> 
                                 <td>            
                                     <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit{{ $value->tracking_id }}"><i class="fas fa-edit"></i></a>

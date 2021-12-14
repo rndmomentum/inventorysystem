@@ -77,6 +77,7 @@ class TransactionsController extends Controller
             'type_transaction' => 'IN',
             'purpose' => 0,
             'stock_in_id' => 0,
+            'stock_status' => 'normal',
             'short_code' => $information->short_code,
         ]);
 
@@ -171,13 +172,23 @@ class TransactionsController extends Controller
                 'type_transaction' => 'OUT',
                 'purpose' => $request->purpose,
                 'stock_in_id' => $stock_out->tracking_id,
+                'stock_status' => 'normal',
                 'short_code' => $stock_out->short_code,
             ]);
 
 
             $stock_out->total_stock = $stock_out->total_stock - $request->total_stock;
 
-            $stock_out->save();
+            if($stock_out->total_stock <= $stock_out->minimum_stock)
+            {
+                $stock_out->stock_status = 'low';
+                $stock_out->save();
+
+            }else{
+                
+                $stock_out->save();
+
+            }
 
             return redirect()->back()->with('success', 'Stock quantity updated.');
 
@@ -259,6 +270,7 @@ class TransactionsController extends Controller
             'type_transaction' => 'RETURN',
             'purpose' => $request->purpose,
             'stock_in_id' => 0,
+            'stock_status' => 'normal',
             'short_code' => $information->short_code,
         ]);
 
