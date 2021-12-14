@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
-Route::get('myapp', 'InformationController@myapp');
 
 
 /*
@@ -79,6 +78,8 @@ Route::get('transaction/stockout/search', 'TransactionsController@stock_out_sear
 Route::get('transaction/stockout/list/search', 'TransactionsController@stock_out_list_search');
 Route::get('transaction/stockin/search', 'TransactionsController@stock_in_search');
 Route::get('transaction/stockreturn/search', 'TransactionsController@stock_return_search');
+
+Route::get('transaction/stockin/report', 'TransactionsController@stock_in_report');
 
 
 /*
