@@ -55,6 +55,7 @@
                         <th>Name</th>
                         <th>Total Stock</th>
                         <th>Purpose</th>
+                        <th>Last Update</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -64,6 +65,7 @@
                                 <td>{{ $value->name }}</td>
                                 <td>{{ $value->total_stock }}</td>
                                 <td>{{ $value->purpose }}</td> 
+                                <td>{{ Carbon\Carbon::parse($value->updated_at)->toDateString() }}</td>
                                 <td>            
                                     <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#remove{{ $value->tracking_id }}"><i class="fas fa-trash-alt"></i></a>
                                 </td>
