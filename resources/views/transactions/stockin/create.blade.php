@@ -44,6 +44,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="float-end mb-3">
+                        <a href="{{ url('transaction/stockin/report') }}" class="btn btn-outline-danger"><i class="far fa-flag"></i> Report</a>
                         <a href="{{ url('transaction/stockin/list') }}" class="btn btn-outline-danger"><i class="fas fa-list-alt"></i> See List</a>
                     </div>
                 </div>

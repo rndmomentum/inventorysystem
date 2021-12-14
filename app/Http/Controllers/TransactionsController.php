@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Information;
 use App\Models\Transactions;
 use Carbon\Carbon;
+use App\Models\StockInReport;
 
 class TransactionsController extends Controller
 {
@@ -86,9 +87,14 @@ class TransactionsController extends Controller
     {
         $stock_in = Transactions::where('tracking_id', $id)->first();
 
-        $stock_in->total_stock = $request->total_stock;
+        $stock_in->total_stock = $request->total_stock + $stock_in->total_stock;
 
         $stock_in->save();
+
+        StockInReport::create([
+            'total_stock' => $request->total_stock,
+            'tracking_id' => $id,
+        ]);
 
         return redirect()->back()->with('success', 'Stock was updated');
     }
@@ -106,6 +112,14 @@ class TransactionsController extends Controller
             return redirect()->back()->with('error', 'Not found any stock.');
         }
 
+    }
+
+    public function stock_in_report()
+    {
+        $transaction_in = Transactions::orderBy('id', 'Desc')->where('type_transaction', 'IN')->get();
+        $stock_in_report = StockInReport::orderBy('id', 'Desc')->get();
+
+        return view('transactions.stockin.report', compact('stock_in_report', 'transaction_in'));
     }
 
 

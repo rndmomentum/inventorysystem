@@ -105,7 +105,7 @@
                                         @csrf
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <input type="text" class="form-control" name="total_stock" placeholder="Total Stock" value="{{ $value->total_stock }}" required>
+                                                <input type="text" class="form-control" name="total_stock" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="New Total Stock" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
