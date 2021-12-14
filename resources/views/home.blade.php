@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('transaction/stockin/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-danger text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-sign-in-alt"></i> Stock In</h4>
                                 New stock come from vendor
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('transaction/stockout/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-danger text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-sign-out-alt"></i> Stock Out</h4>
                                 Stock out from inventory
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('transaction/stockreturn/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-danger text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-exchange-alt"></i> Stock Return</h4>
                                 Stock return to inventory
@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('information/category/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-primary text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-th-list"></i> Category</h4>
                                 New category and list category
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('information/location/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-primary text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-location-arrow"></i> Location</h4>
                                 New location and list location
@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('information/suppliers/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-primary text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-user-tag"></i> Supplier</h4>
                                 New supllier and list supplier
@@ -111,7 +111,7 @@
                 </div>
                 <div class="col-md-4 mt-2">
                     <a href="{{ url('information/size/create') }}" class="text-decoration-none text-dark">
-                        <div class="card bg-primary text-light border-20">
+                        <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-tshirt"></i> Shirt Size</h4>
                                 Add size shirt here and list size
