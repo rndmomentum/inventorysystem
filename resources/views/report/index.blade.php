@@ -16,10 +16,16 @@
                 </ol>
             </nav>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-5">
             <div id="piechart"></div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-12 mb-3">
             <h4>Daily Transactions</h4>
             <hr>
             <table class="table">
@@ -34,13 +40,14 @@
                 <tbody>
                     <tr>
                         <td>{{ $daily }}</td>
-                        <td>{{ $stock_in_date }}</td>
+                        <td>{{ $stock_in_date + $stock_in_report_daily }}</td>
                         <td>{{ $stock_out_date }}</td>
                         <td>{{ $stock_return_date }}</td>
                     </tr>
                 </tbody>
             </table>
-
+        </div>
+        <div class="col-md-12 mb-3">
             <h4 class="mt-5">Monthly Transactions</h4>
             <hr>
             <table class="table">
@@ -55,7 +62,7 @@
                 <tbody>
                     <tr>
                         <td>{{ $monthly }}</td>
-                        <td>{{ $stock_in }}</td>
+                        <td>{{ $stock_in + $stock_in_report_monthly }}</td>
                         <td>{{ $stock_out }}</td>
                         <td>{{ $stock_return }}</td>
                     </tr>
@@ -77,13 +84,13 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Task', 'Hours per Day'],
-  ['Stock In', {{ $stock_in }}],
+  ['Stock In', {{ $stock_in + $stock_in_report_daily }}],
   ['Stock Out', {{ $stock_out }}],
   ['Stock Return', {{ $stock_return }}],
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Monthly Transactions', 'width':650, 'height':500};
+  var options = {'title':'Monthly Transactions', 'width':750, 'height':500};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
