@@ -134,6 +134,9 @@
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" name="total_stock" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" placeholder="New Total Stock" required>
                                             </div>
+                                            <div class="mb-3">
+                                                <textarea class="form-control" name="notes" placeholder="Notes Here" rows="3"></textarea>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>                          

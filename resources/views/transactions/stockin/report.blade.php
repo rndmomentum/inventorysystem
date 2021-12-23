@@ -32,6 +32,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Total Stock</th>
+                        <th>Notes</th>
                         <th>Last Update</th>
                     </thead>
                     <tbody>
@@ -42,6 +43,13 @@
                                         <td>{{ $value->tracking_id }}</td>
                                         <td>{{ $in->name }}</td>
                                         <td>{{ $value->total_stock }}</td>
+                                        <td>
+                                            @if ($in->notes == NULL)
+                                                -
+                                            @else
+                                                {{ $in->notes }}
+                                            @endif
+                                        </td>
                                         <td>{{ Carbon\Carbon::parse($value->updated_at)->toDateString() }}</td>
                                     </tr>
                                 @endif

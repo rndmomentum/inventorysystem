@@ -62,8 +62,10 @@ class TransactionsController extends Controller
 
         // $total = $transaction->id + 1;
 
+        $tracking_id = $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN';
+
         Transactions::create([
-            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
+            'tracking_id' => $tracking_id,
             // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
             'name' => $request->name,
             'category_id' => $request->category,
@@ -81,6 +83,12 @@ class TransactionsController extends Controller
             'short_code' => $information->short_code,
         ]);
 
+        StockInReport::create([
+            'total_stock' => $request->total_stock,
+            'tracking_id' => $tracking_id,
+        ]);
+
+
         return redirect()->back()->with('success', 'Stock was check in');
     }
 
@@ -89,6 +97,7 @@ class TransactionsController extends Controller
         $stock_in = Transactions::where('tracking_id', $id)->first();
 
         $stock_in->total_stock = $request->total_stock + $stock_in->total_stock;
+        $stock_in->notes = $request->notes;
 
         $stock_in->save();
 

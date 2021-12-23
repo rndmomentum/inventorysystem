@@ -27,5 +27,6 @@ class Transactions extends Model
         'stock_in_id',
         'stock_status',
         'short_code',
+        'notes',
     ];
 }
