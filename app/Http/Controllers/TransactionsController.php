@@ -39,7 +39,7 @@ class TransactionsController extends Controller
 
     public function stock_in_list()
     {   
-        $stock_in = Transactions::where('type_transaction', 'IN')->paginate(10);
+        $stock_in = Transactions::orderBy('id', 'Desc')->where('type_transaction', 'IN')->paginate(10);
 
         return view('transactions.stockin.list', compact('stock_in'));
     }
@@ -121,6 +121,13 @@ class TransactionsController extends Controller
         $stock_in_report = StockInReport::orderBy('id', 'Desc')->get();
 
         return view('transactions.stockin.report', compact('stock_in_report', 'transaction_in'));
+    }
+
+    public function stock_in_filter_date(Request $request)
+    {
+        $stock_in = Transactions::where('type_transaction', 'IN')->orderBy('id', 'Desc')->whereBetween('updated_at', [$request->from . " 00:00:00", $request->to . " 23:59:59"])->get();
+
+        return view('transactions.stockin.list', compact('stock_in'));
     }
 
 
@@ -225,6 +232,13 @@ class TransactionsController extends Controller
 
     }
 
+    public function stock_out_filter_date(Request $request)
+    {
+        $stock_out = Transactions::where('type_transaction', 'OUT')->orderBy('id', 'Desc')->whereBetween('updated_at', [$request->from . " 00:00:00", $request->to . " 23:59:59"])->get();
+
+        return view('transactions.stockout.list', compact('stock_out'));
+    }
+
 
     /*
     |--------------------------------------------------------------------------
@@ -298,6 +312,13 @@ class TransactionsController extends Controller
             return redirect()->back()->with('error', 'Not found any stock.');
         }
 
+    }
+
+    public function stock_return_filter_date(Request $request)
+    {
+        $stock_return = Transactions::where('type_transaction', 'RETURN')->orderBy('id', 'Desc')->whereBetween('updated_at', [$request->from . " 00:00:00", $request->to . " 23:59:59"])->get();
+
+        return view('transactions.stockreturn.list', compact('stock_return'));
     }
 
     /*

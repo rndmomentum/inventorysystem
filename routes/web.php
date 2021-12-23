@@ -81,6 +81,10 @@ Route::get('transaction/stockreturn/search', 'TransactionsController@stock_retur
 
 Route::get('transaction/stockin/report', 'TransactionsController@stock_in_report');
 
+Route::get('transaction/stockin/filter', 'TransactionsController@stock_in_filter_date');
+Route::get('transaction/stockout/filter', 'TransactionsController@stock_out_filter_date');
+Route::get('transaction/stockreturn/filter', 'TransactionsController@stock_return_filter_date');
+
 
 /*
 |--------------------------------------------------------------------------

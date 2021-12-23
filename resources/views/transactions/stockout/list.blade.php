@@ -48,6 +48,27 @@
                     </div>
                 </div>
             </form>
+
+            {{-- Filter Date --}}
+            <form action="{{ url('transaction/stockout/filter') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="from" placeholder="exp. 2021-01-01" required>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="to" placeholder="exp. 2021-01-31" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-dark float-end"><i class="fas fa-filter"></i> Filter</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
