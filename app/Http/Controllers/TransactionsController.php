@@ -162,11 +162,11 @@ class TransactionsController extends Controller
 
         }else {
 
-            // $transaction = Transactions::orderBy('id', 'Desc')->first();
-            // $total = $transaction->id + 1;
+            $transaction = Transactions::orderBy('id', 'Desc')->first();
+            $total = $transaction->id + 1;
 
             Transactions::create([
-                'tracking_id' => $stock_out->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'OUT',
+                'tracking_id' => $stock_out->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'OUT',
                 'name' => $stock_out->name,
                 'category_id' => $stock_out->category_id,
                 'location_id' => $stock_out->location_id,
@@ -259,8 +259,8 @@ class TransactionsController extends Controller
     public function stock_return_store(Request $request)
     {
         $information = Information::where('information_id', $request->category)->first();
-        // $transaction = Transactions::orderBy('id', 'Desc')->first();
-        // $total = $transaction->id + 1;
+        $transaction = Transactions::orderBy('id', 'Desc')->first();
+        $total = $transaction->id + 1;
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -271,7 +271,7 @@ class TransactionsController extends Controller
 
 
         Transactions::create([
-            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'RETURN',
+            'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'RETURN',
             'name' => $request->name,
             'category_id' => $request->category,
             'location_id' => 0,
