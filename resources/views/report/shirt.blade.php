@@ -16,7 +16,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="col-md-12 mb-3">
+        {{-- <div class="col-md-12 mb-3">
             <h4>Stock In</h4>
             <hr>
             <table class="table">
@@ -41,33 +41,84 @@
                     @endforeach
                 </tbody>
             </table>
+        </div> --}}
+        <div class="col-md-12 mb-3">
+            <h4>Daily Transactions ( {{ date('d-m-Y') }} )</h4>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Size</th>
+                    <th>Stock In</th>
+                    <th>Stock Out</th>
+                    <th>Stock Return</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>XS</td>
+                        <td>{{ $stock_in_xs }}</td>
+                        <td>{{ $stock_out_xs }}</td>
+                        <td>{{ $stock_return_xs }}</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>S</td>
+                        <td>{{ $stock_in_s }}</td>
+                        <td>{{ $stock_out_s }}</td>
+                        <td>{{ $stock_return_s }}</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>M</td>
+                        <td>{{ $stock_in_m }}</td>
+                        <td>{{ $stock_out_m }}</td>
+                        <td>{{ $stock_return_m }}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>L</td>
+                        <td>{{ $stock_in_l }}</td>
+                        <td>{{ $stock_out_l }}</td>
+                        <td>{{ $stock_return_l }}</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>XL</td>
+                        <td>{{ $stock_in_xl }}</td>
+                        <td>{{ $stock_out_xl }}</td>
+                        <td>{{ $stock_return_xl }}</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2XL</td>
+                        <td>{{ $stock_in_2xl }}</td>
+                        <td>{{ $stock_out_2xl }}</td>
+                        <td>{{ $stock_return_2xl }}</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>3XL</td>
+                        <td>{{ $stock_in_3xl }}</td>
+                        <td>{{ $stock_out_3xl }}</td>
+                        <td>{{ $stock_return_3xl }}</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>4XL</td>
+                        <td>{{ $stock_in_4xl }}</td>
+                        <td>{{ $stock_out_4xl }}</td>
+                        <td>{{ $stock_return_4xl }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 @endsection
 
 @section('js')
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
 
-// Draw the chart and set the chart values
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-  ['Task', 'Hours per Day'],
-  ['Stock In', {{ $stock_in }}],
-  ['Stock Out', {{ $stock_out }}],
-  ['Stock Return', {{ $stock_return }}],
-]);
-
-  // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Monthly Transactions', 'width':650, 'height':500};
-
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-  chart.draw(data, options);
-}
-</script>
 @endsection
