@@ -190,6 +190,7 @@ class TransactionsController extends Controller
                 'stock_in_id' => $stock_out->tracking_id,
                 'stock_status' => 'normal',
                 'short_code' => $stock_out->short_code,
+                'stock_out_status' => $request->status,
             ]);
 
 

@@ -98,6 +98,13 @@
                                                             <small class="text-danger">Please note, cannot be more than <b>{{ $value->total_stock }}</b></small>
                                                         </div>
                                                         <div class="mb-3">
+                                                            <select class="form-select" name="status" required>
+                                                                <option value="">-- Choose Status --</option>
+                                                                <option value="prepare">Prepare</option>
+                                                                <option value="being_used">Being Used</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
                                                             <label class="form-label">Purpose (Optional)</label>
                                                             <textarea class="form-control" name="purpose" placeholder="Add your purpose here" rows="3"></textarea>
                                                         </div>
