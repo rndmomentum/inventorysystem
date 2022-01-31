@@ -25,8 +25,17 @@
         <div class="col-md-4">
 
         </div>
-        <div class="col-md-12 mb-3">
-            <h4>Daily Transactions</h4>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Daily Transactions</h4>
+                </div>
+                <div class="col-md-6">
+                    <small class="float-end"><a href="{{ url('report/details/daily') }}" class="text-primary text-decoration-none"> See Details</a></small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
             <hr>
             <table class="table">
                 <thead>
@@ -47,8 +56,18 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="col-md-12 mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Monthly Transactions</h4>
+                </div>
+                <div class="col-md-6">
+                    <small class="float-end"><a href="{{ url('report/details/monthly') }}" class="text-primary text-decoration-none"> See Details</a></small>
+                </div>
+            </div>
+        </div>
         <div class="col-md-12 mb-3">
-            <h4 class="mt-5">Monthly Transactions</h4>
             <hr>
             <table class="table">
                 <thead>

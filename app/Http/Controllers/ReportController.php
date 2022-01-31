@@ -88,4 +88,26 @@ class ReportController extends Controller
         'stock_in_2xl', 'stock_out_2xl', 'stock_return_2xl', 'stock_in_3xl', 'stock_out_3xl', 'stock_return_3xl', 'stock_in_4xl', 'stock_out_4xl', 'stock_return_4xl'));
 
     }
+
+    public function report_details_daily()
+    {
+        $count = 1;
+        $daily = date('Y-m-d');
+
+        $stocks = Transactions::whereRaw("(created_at >= ? AND created_at <= ?)", [$daily . " 00:00:00", $daily . " 23:59:59"])->get();
+
+        return view('report.details_daily', compact('stocks', 'count'));
+
+    }
+
+    public function report_details_monthly()
+    {
+        $count = 1;
+        $from = date('Y-m-01');
+        $to = date('Y-m-31');
+
+        $stocks = Transactions::whereRaw("(created_at >= ? AND created_at <= ?)", [$from . " 00:00:00", $to . " 23:59:59"])->get();
+
+        return view('report.details_monthly', compact('stocks', 'count'));
+    }
 }

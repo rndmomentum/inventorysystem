@@ -94,6 +94,8 @@ Route::get('transaction/stockreturn/filter', 'TransactionsController@stock_retur
 
  Route::get('report', 'ReportController@index');
  Route::get('report/shirt', 'ReportController@shirt');
+ Route::get('report/details/daily', 'ReportController@report_details_daily');
+ Route::get('report/details/monthly', 'ReportController@report_details_monthly');
 
 
 
