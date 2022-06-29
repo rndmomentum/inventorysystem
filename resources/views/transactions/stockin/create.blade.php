@@ -107,14 +107,14 @@
                         </div>
                     </div> --}}
                     <div class="col-md-6">
-                        <label>Upload Invoice</label>
+                        <label>Upload Invoice (Optional)</label>
                         <div class="mb-3">
                             <input class="form-control" type="file" name="invoice" required>
                             <small class="text-danger">*Please note, only pdf!</small>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label>Upload Stock Image</label>
+                        <label>Upload Stock Image (Optional)</label>
                         <div class="mb-3">
                             <input class="form-control" type="file" name="image" required>
                             <small class="text-danger">*Please note, only image!</small>
