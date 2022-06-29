@@ -64,24 +64,83 @@ class TransactionsController extends Controller
 
         $tracking_id = $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'IN';
 
-        Transactions::create([
-            'tracking_id' => $tracking_id,
-            // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
-            'name' => $request->name,
-            'category_id' => $request->category,
-            'location_id' => $request->location,
-            'suppliers_id' => $request->suppliers,
-            'size_id' => $request->size,
-            'invoice_id' => $pdfname,
-            'image' => $imagename,
-            'total_stock' => $request->total_stock,
-            'minimum_stock' => $request->minimum_stock,
-            'type_transaction' => 'IN',
-            'purpose' => 0,
-            'stock_in_id' => 0,
-            'stock_status' => 'normal',
-            'short_code' => $information->short_code,
-        ]);
+        if ($pdfname == "" && $imagename == "") {
+            Transactions::create([
+                'tracking_id' => $tracking_id,
+                // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
+                'name' => $request->name,
+                'category_id' => $request->category,
+                'location_id' => $request->location,
+                'suppliers_id' => $request->suppliers,
+                'size_id' => $request->size,
+                'invoice_id' => "",
+                'image' => "",
+                'total_stock' => $request->total_stock,
+                'minimum_stock' => $request->minimum_stock,
+                'type_transaction' => 'IN',
+                'purpose' => 0,
+                'stock_in_id' => 0,
+                'stock_status' => 'normal',
+                'short_code' => $information->short_code,
+            ]);
+        }elseif ($pdfname == "") {
+            Transactions::create([
+                'tracking_id' => $tracking_id,
+                // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
+                'name' => $request->name,
+                'category_id' => $request->category,
+                'location_id' => $request->location,
+                'suppliers_id' => $request->suppliers,
+                'size_id' => $request->size,
+                'invoice_id' => "",
+                'image' => $imagename,
+                'total_stock' => $request->total_stock,
+                'minimum_stock' => $request->minimum_stock,
+                'type_transaction' => 'IN',
+                'purpose' => 0,
+                'stock_in_id' => 0,
+                'stock_status' => 'normal',
+                'short_code' => $information->short_code,
+            ]);
+        }elseif ($imagename == "") {
+            Transactions::create([
+                'tracking_id' => $tracking_id,
+                // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
+                'name' => $request->name,
+                'category_id' => $request->category,
+                'location_id' => $request->location,
+                'suppliers_id' => $request->suppliers,
+                'size_id' => $request->size,
+                'invoice_id' => $pdfname,
+                'image' => "",
+                'total_stock' => $request->total_stock,
+                'minimum_stock' => $request->minimum_stock,
+                'type_transaction' => 'IN',
+                'purpose' => 0,
+                'stock_in_id' => 0,
+                'stock_status' => 'normal',
+                'short_code' => $information->short_code,
+            ]);
+        }else{
+            Transactions::create([
+                'tracking_id' => $tracking_id,
+                // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
+                'name' => $request->name,
+                'category_id' => $request->category,
+                'location_id' => $request->location,
+                'suppliers_id' => $request->suppliers,
+                'size_id' => $request->size,
+                'invoice_id' => $pdfname,
+                'image' => $imagename,
+                'total_stock' => $request->total_stock,
+                'minimum_stock' => $request->minimum_stock,
+                'type_transaction' => 'IN',
+                'purpose' => 0,
+                'stock_in_id' => 0,
+                'stock_status' => 'normal',
+                'short_code' => $information->short_code,
+            ]);
+        }
 
         StockInReport::create([
             'total_stock' => $request->total_stock,
@@ -331,7 +390,21 @@ class TransactionsController extends Controller
         return view('transactions.stockreturn.list', compact('stock_return'));
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Stock Reject
+    |--------------------------------------------------------------------------
+    */
 
+    public function stock_reject()
+    {
+        $category = Information::where('information_type', 'CATEGORY')->orderBy('id', 'Desc')->get();
+        $location = Information::where('information_type', 'LOCATION')->orderBy('id', 'Desc')->get();
+        $suppliers = Information::where('information_type', 'SUPPLIERS')->orderBy('id', 'Desc')->get();
+        $size = Information::where('information_type', 'SIZE')->orderBy('id', 'Desc')->get();
+
+        return view('transactions.stockreject.create', compact('category', 'location', 'suppliers', 'size'));
+    }
 
     /*
     |--------------------------------------------------------------------------
