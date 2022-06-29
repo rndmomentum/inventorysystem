@@ -36,6 +36,7 @@
         @endif
         <div class="col-md-12 mt-3">
             <h4>List Stock In</h4>
+            <small>List items to check before Stock Out</small>
             <hr>
             <div class="row">
                 <div class="col-md-12">
