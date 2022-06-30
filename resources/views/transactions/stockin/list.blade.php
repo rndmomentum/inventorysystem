@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="track" placeholder="exp. MW-2021-11-10-0" required>
+                        <input type="text" class="form-control" name="track" placeholder="Search name here" required>
                         <button class="btn btn-outline-danger" type="submit">Search</button>
                         </div>
                     </div>
