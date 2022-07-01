@@ -47,24 +47,18 @@ class TransactionsController extends Controller
     public function stock_in_store(Request $request)
     {   
         $information = Information::where('information_id', $request->category)->first();
-        // $transaction = Transactions::orderBy('id', 'Desc')->first();
+        $transaction = Transactions::orderBy('id', 'Desc')->first();
 
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,HEIC|max:2048',
-            'invoice' => 'required|mimes:pdf|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,HEIC|max:2048',
+            'invoice' => 'mimes:pdf|max:2048',
         ]);
 
-        $imagename = 'img_' . uniqid() . '.' . $request->image->extension();
-        $request->image->move(public_path('images/stockin'), $imagename);
-
-        $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
-        $request->invoice->move(public_path('pdf/invoices'), $pdfname);
-
-        // $total = $transaction->id + 1;
+        $total = $transaction->id + 1;
 
         $tracking_id = $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . $total . '-' . 'IN';
 
-        if ($pdfname == "" && $imagename == "") {
+        if ($request->invoice == "" && $request->image == "") {
             Transactions::create([
                 'tracking_id' => $tracking_id,
                 // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
@@ -83,7 +77,11 @@ class TransactionsController extends Controller
                 'stock_status' => 'normal',
                 'short_code' => $information->short_code,
             ]);
-        }elseif ($pdfname == "") {
+        }elseif ($request->invoice == "") {
+
+            $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
+            $request->invoice->move(public_path('pdf/invoices'), $pdfname);
+
             Transactions::create([
                 'tracking_id' => $tracking_id,
                 // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
@@ -102,7 +100,11 @@ class TransactionsController extends Controller
                 'stock_status' => 'normal',
                 'short_code' => $information->short_code,
             ]);
-        }elseif ($imagename == "") {
+        }elseif ($request->image == "") {
+
+            $imagename = 'img_' . uniqid() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/stockin'), $imagename);
+
             Transactions::create([
                 'tracking_id' => $tracking_id,
                 // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
@@ -122,6 +124,13 @@ class TransactionsController extends Controller
                 'short_code' => $information->short_code,
             ]);
         }else{
+
+            $imagename = 'img_' . uniqid() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/stockin'), $imagename);
+
+            $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
+            $request->invoice->move(public_path('pdf/invoices'), $pdfname);
+
             Transactions::create([
                 'tracking_id' => $tracking_id,
                 // 'tracking_id' => $information->short_code . '-' . date('Y') . '-' . date('m') . '-' . date('d') . '-' . 1 . '-' . 'IN',
@@ -196,6 +205,23 @@ class TransactionsController extends Controller
         $stock_in = Transactions::where('type_transaction', 'IN')->orderBy('id', 'Desc')->whereBetween('updated_at', [$request->from . " 00:00:00", $request->to . " 23:59:59"])->get();
 
         return view('transactions.stockin.list', compact('stock_in'));
+    }
+
+    public function stock_in_edit($id)
+    {   
+        $transaction = Transactions::where('tracking_id', $id)->first();
+
+        $category = Information::where('information_type', 'CATEGORY')->orderBy('id', 'Desc')->get();
+        $location = Information::where('information_type', 'LOCATION')->orderBy('id', 'Desc')->get();
+        $suppliers = Information::where('information_type', 'SUPPLIERS')->orderBy('id', 'Desc')->get();
+        $size = Information::where('information_type', 'SIZE')->orderBy('id', 'Desc')->get();
+
+        return view('transactions.stockin.edit', compact('category', 'location', 'suppliers', 'size', 'transaction'));
+    }
+
+    public function stock_in_update_info()
+    {
+
     }
 
 
