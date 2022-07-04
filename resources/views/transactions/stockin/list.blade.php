@@ -93,8 +93,9 @@
                                 </td>
                                 <td>{{ $value->minimum_stock }}</td> 
                                 <td>{{ Carbon\Carbon::parse($value->updated_at)->toDateString() }}</td>
-                                <td>            
-                                    <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#update{{ $value->tracking_id }}"><i class="fas fa-edit"></i></a>
+                                <td>     
+                                    <a href="{{ url('transaction/stockin/edit') }}/{{ $value->tracking_id }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>       
+                                    <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#update{{ $value->tracking_id }}"><i class="fas fa-plus"></i></a>
                                     <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#remove{{ $value->tracking_id }}"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
