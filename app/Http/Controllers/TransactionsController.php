@@ -211,17 +211,103 @@ class TransactionsController extends Controller
     {   
         $transaction = Transactions::where('tracking_id', $id)->first();
 
-        $category = Information::where('information_type', 'CATEGORY')->orderBy('id', 'Desc')->get();
-        $location = Information::where('information_type', 'LOCATION')->orderBy('id', 'Desc')->get();
-        $suppliers = Information::where('information_type', 'SUPPLIERS')->orderBy('id', 'Desc')->get();
-        $size = Information::where('information_type', 'SIZE')->orderBy('id', 'Desc')->get();
+        $category = Information::where('information_type', 'CATEGORY')->where('information_id',$transaction->category_id)->first();
+        $get_category = Information::where('information_type', 'CATEGORY')->where('information_id', '!=',$transaction->category_id)->orderBy('id', 'Desc')->get();
 
-        return view('transactions.stockin.edit', compact('category', 'location', 'suppliers', 'size', 'transaction'));
+        $location = Information::where('information_type', 'LOCATION')->where('information_id',$transaction->location_id)->first();
+        $get_location = Information::where('information_type', 'LOCATION')->where('information_id', '!=',$transaction->location_id)->orderBy('id', 'Desc')->get();
+
+        $suppliers = Information::where('information_type', 'SUPPLIERS')->where('information_id',$transaction->suppliers_id)->first();
+        $get_suppliers = Information::where('information_type', 'SUPPLIERS')->where('information_id', '!=',$transaction->suppliers_id)->orderBy('id', 'Desc')->get();
+
+        $size = Information::where('information_type', 'SIZE')->where('information_id',$transaction->size_id)->first();
+        $get_size = Information::where('information_type', 'SIZE')->where('information_id', '!=',$transaction->size_id)->orderBy('id', 'Desc')->get();
+
+        return view('transactions.stockin.edit', compact('get_category', 'category', 'location', 'get_location', 'suppliers', 'get_suppliers', 'size', 'get_size', 'transaction'));
     }
 
-    public function stock_in_update_info()
+    public function stock_in_update_info(Request $request,$id)
     {
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,HEIC|max:2048',
+            'invoice' => 'mimes:pdf|max:2048',
+        ]);
 
+        $transaction = Transactions::where('tracking_id', $id)->first();
+
+        if ($request->image == "" && $request->invoice == "") {
+
+            $transaction->name = $request->name;
+            $transaction->category_id = $request->category;
+            $transaction->location_id = $request->location;
+            $transaction->suppliers_id = $request->suppliers;
+            $transaction->size_id = $request->size;
+            $transaction->total_stock = $request->total_stock;
+            $transaction->minimum_stock = $request->minimum_stock;
+
+            $transaction->save();
+
+            return redirect()->back()->with('success', 'Stock Information Updated!');
+
+        }elseif ($request->image == "") {
+
+            $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
+            $request->invoice->move(public_path('pdf/invoices'), $pdfname);
+
+            $transaction->name = $request->name;
+            $transaction->category_id = $request->category;
+            $transaction->location_id = $request->location;
+            $transaction->suppliers_id = $request->suppliers;
+            $transaction->size_id = $request->size;
+            $transaction->total_stock = $request->total_stock;
+            $transaction->minimum_stock = $request->minimum_stock;
+            $transaction->invoice_id = $pdfname;
+
+            $transaction->save();
+
+            return redirect()->back()->with('success', 'Stock Information Updated!');
+
+        }elseif ($request->invoice == "") {
+
+            $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
+            $request->invoice->move(public_path('pdf/invoices'), $pdfname);
+
+            $transaction->name = $request->name;
+            $transaction->category_id = $request->category;
+            $transaction->location_id = $request->location;
+            $transaction->suppliers_id = $request->suppliers;
+            $transaction->size_id = $request->size;
+            $transaction->total_stock = $request->total_stock;
+            $transaction->minimum_stock = $request->minimum_stock;
+            $transaction->image = $imagename;
+
+            $transaction->save();
+
+            return redirect()->back()->with('success', 'Stock Information Updated!');
+
+        }else {
+
+            $imagename = 'img_' . uniqid() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/stockin'), $imagename);
+
+            $pdfname = 'pdf_' . uniqid() . '.' . $request->invoice->extension();
+            $request->invoice->move(public_path('pdf/invoices'), $pdfname);
+
+            $transaction->name = $request->name;
+            $transaction->category_id = $request->category;
+            $transaction->location_id = $request->location;
+            $transaction->suppliers_id = $request->suppliers;
+            $transaction->size_id = $request->size;
+            $transaction->total_stock = $request->total_stock;
+            $transaction->minimum_stock = $request->minimum_stock;
+            $transaction->invoice_id = $pdfname;
+            $transaction->image = $imagename;
+
+            $transaction->save();
+
+            return redirect()->back()->with('success', 'Stock Information Updated!');
+
+        }
     }
 
 

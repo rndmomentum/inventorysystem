@@ -67,6 +67,7 @@ Route::post('transaction/stockout/store/{id}', 'TransactionsController@stock_out
 Route::post('transaction/stockreturn/store', 'TransactionsController@stock_return_store');
 
 Route::post('transaction/stockin/update/{id}', 'TransactionsController@stock_in_update');
+Route::post('transaction/stockin/update-info/{id}', 'TransactionsController@stock_in_update_info');
 
 Route::get('transaction/stockin/list', 'TransactionsController@stock_in_list');
 Route::get('transaction/stockout/list', 'TransactionsController@stock_out_list');
