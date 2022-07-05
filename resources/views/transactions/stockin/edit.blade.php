@@ -77,11 +77,18 @@
                     </div>
                     <div class="col-md-3">
                         <select class="form-select" name="size" required>
-                            {{-- <option value="{{ $size->information_id }}">{{ $size->name }}</option> --}}
-                            <option value="0">No Size</option>
-                            @foreach ($get_size as $value)
-                                <option value="{{ $value->information_id }}">{{ $value->name }} - {{ $value->size }}</option>
-                            @endforeach
+                            @if ($transaction->size_id == 0)
+                                <option value="0">No Size</option>
+                                @foreach ($get_size as $value)
+                                    <option value="{{ $value->information_id }}">{{ $value->name }} - {{ $value->size }}</option>
+                                @endforeach
+                            @else
+                                <option value="{{ $size->information_id }}">{{ $size->name }}</option>
+                                @foreach ($get_size as $value)
+                                    <option value="{{ $value->information_id }}">{{ $value->name }} - {{ $value->size }}</option>
+                                @endforeach
+                                <option value="0">No Size</option>
+                            @endif
                         </select>
                     </div>
                     <div class="col-md-6">
