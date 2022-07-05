@@ -77,7 +77,7 @@
                     </div>
                     <div class="col-md-3">
                         <select class="form-select" name="size" required>
-                            <option value="{{ $size->information_id }}">{{ $size->name }}</option>
+                            {{-- <option value="{{ $size->information_id }}">{{ $size->name }}</option> --}}
                             <option value="0">No Size</option>
                             @foreach ($get_size as $value)
                                 <option value="{{ $value->information_id }}">{{ $value->name }} - {{ $value->size }}</option>
