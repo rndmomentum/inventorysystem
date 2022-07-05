@@ -122,6 +122,18 @@
             </form>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            Preview Image : 
+        </div>
+        <div class="col-md-4 mt-2">
+            @if ($transaction->image == 0)
+                <p class="text-danger"><b>No Image</b></p>
+            @else
+                <img src="{{ asset('images/stockin') }}/{{ $transaction }}" class="img-fluid" alt="{{ $transaction->name }}">
+            @endif
+        </div>
+    </div>
 </div>
 @endsection
 
