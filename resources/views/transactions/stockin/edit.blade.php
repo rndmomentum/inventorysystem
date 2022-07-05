@@ -130,7 +130,7 @@
             @if ($transaction->image == 0)
                 <p class="text-danger"><b>No Image</b></p>
             @else
-                <img src="{{ asset('images/stockin') }}/{{ $transaction }}" class="img-fluid" alt="{{ $transaction->name }}">
+                <img src="{{ asset('images/stockin') }}/{{ $transaction->image }}" class="img-fluid" alt="{{ $transaction->name }}">
             @endif
         </div>
     </div>
