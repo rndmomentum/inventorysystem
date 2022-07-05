@@ -61,6 +61,8 @@ Route::get('information/size/search', 'InformationController@size_search');
 Route::get('transaction/stockin/create', 'TransactionsController@stock_in');
 Route::get('transaction/stockout/create', 'TransactionsController@stock_out');
 Route::get('transaction/stockreturn/create', 'TransactionsController@stock_return');
+// Route::get('transaction/stockreject/create', 'TransactionsController@stock_reject');
+Route::get('transaction/stockin/edit/{id}', 'TransactionsController@stock_in_edit');
 
 Route::post('transaction/stockin/store', 'TransactionsController@stock_in_store');
 Route::post('transaction/stockout/store/{id}', 'TransactionsController@stock_out_create');
