@@ -15,10 +15,8 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Transaction</li>
-                    <li class="breadcrumb-item" aria-current="page">Stock Out</li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">List Stock Out </li>
                 </ol>
             </nav>
         </div>
@@ -35,13 +33,13 @@
             </div>
         @endif
         <div class="col-md-12 mt-3">
-            <h4>List Stock In</h4>
+            <h4>List Stock Out </h4>
             <small>List items to check before Stock Out</small>
             <hr>
             <div class="row">
                 <div class="col-md-12">
                     <div class="float-end mb-3">
-                        <a href="{{ url('transaction/stockout/list') }}" class="btn btn-outline-danger"><i class="fas fa-list-alt"></i> See List</a>
+                        <a href="{{ url('transaction/stockout/list') }}" class="btn btn-outline-danger"><i class="far fa-flag"></i> Record Stock Out </a>
                     </div>
                 </div>
             </div>
@@ -50,7 +48,7 @@
                     <div class="col-md-12">
                         <div class="input-group mb-3">
                         <input type="text" class="form-control" name="track" placeholder="exp. MW-2021-11-10-0" required>
-                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
                         </div>
                     </div>
                 </div>

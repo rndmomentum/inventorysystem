@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"  crossorigin="anonymous">
     @yield('css')
 </head>
 <body>
@@ -74,7 +74,7 @@
         </main>
     </div>
 </body>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"  crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/5c12e9bac7.js" crossorigin="anonymous"></script>
 @yield('js')
 </html>

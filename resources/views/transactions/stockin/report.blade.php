@@ -15,16 +15,23 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Transaction</li>
-                    <li class="breadcrumb-item" aria-current="page">Stock In</li>
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ url('transaction/stockin/create') }}">...</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Report</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('transaction/stockin/list') }}">List Stock In</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">Report</li>
                 </ol>
             </nav>
         </div>
         <div class="col-md-12 mt-3">
-            <h4>Report Stock In</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Report Stock In</h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="float-end mb-2">
+                        <a onclick="window.print()" class="btn btn-outline-success"><i class="fa fa-print"></i> Print</a>
+                    </div>
+                </div>
+            </div>
             <hr>
             <div class="table-responsive">
                 <table class="table table-striped">

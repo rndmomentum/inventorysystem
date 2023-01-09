@@ -10,9 +10,8 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Report</li>
-                    <li class="breadcrumb-item" aria-current="page">Index</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">All Report</li>
                 </ol>
             </nav>
         </div>

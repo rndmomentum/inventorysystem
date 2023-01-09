@@ -10,10 +10,9 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Report</li>
-                    <li class="breadcrumb-item" aria-current="page">Details</li>
-                    <li class="breadcrumb-item" aria-current="page">Monthly</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('report') }}">All Report</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">Monthly Transactions</li>
                 </ol>
             </nav>
         </div>
@@ -21,6 +20,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4>Monthly Transactions</h4>
+                </div>
+                <div class="col-md-6">
+                    <div class="float-end mb-2">
+                        <a onclick="window.print()" class="btn btn-outline-success"><i class="fa fa-print"></i> Print</a>
+                    </div>
                 </div>
             </div>
         </div>
