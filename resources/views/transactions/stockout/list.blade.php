@@ -15,16 +15,14 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Transaction</li>
-                    <li class="breadcrumb-item" aria-current="page">Stock Out</li>
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ url('transaction/stockout/create') }}">...</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">List</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('transaction/stockout/create') }}">List Stock Out</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">Record Stock Out </li>
                 </ol>
             </nav>
         </div>
         <div class="col-md-12 mt-3">
-            <h4>List Stock Out</h4>
+            <h4>Record Stock Out</h4>
             <hr>
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -43,7 +41,7 @@
                     <div class="col-md-12">
                         <div class="input-group mb-3">
                         <input type="text" class="form-control" name="track" placeholder="Search name here" required>
-                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +62,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-dark float-end"><i class="fas fa-filter"></i> Filter</button>
+                            <button type="submit" class="btn btn-primary float-end"><i class="fas fa-filter"></i> Filter</button>
                         </div>
                     </div>
                 </div>

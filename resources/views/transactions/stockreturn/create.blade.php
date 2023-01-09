@@ -15,10 +15,9 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Transaction</li>
-                    <li class="breadcrumb-item" aria-current="page">Stock Return</li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('transaction/stockreturn/list') }}">List Stock Return</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">Stock Return</li>
                 </ol>
             </nav>
         </div>
@@ -41,13 +40,6 @@
         <div class="col-md-12 mt-3">
             <h4>Stock Return</h4>
             <hr>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="float-end mb-3">
-                        <a href="{{ url('transaction/stockreturn/list') }}" class="btn btn-outline-danger"><i class="fas fa-list-alt"></i> See List</a>
-                    </div>
-                </div>
-            </div>
             <form action="{{ url('transaction/stockreturn/store') }}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="row">
@@ -118,7 +110,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-danger float-end">Add <i class="fas fa-plus"></i></button>
+                            <button type="submit" class="btn btn-success float-end">Add <i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>

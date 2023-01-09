@@ -42,7 +42,7 @@
                     <a href="{{ url('report/shirt') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
-                                <h4><i class="fas fa-chart-pie"></i> T-Shirt Report</h4>
+                                <h4><i class="fas fa-clipboard-list"></i> T-Shirt Report</h4>
                                 Display T-Shirt report only with Pie Chart.
                             </div>
                         </div>
@@ -56,7 +56,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-4 mt-2">
-                    <a href="{{ url('transaction/stockin/create') }}" class="text-decoration-none text-dark">
+                    <a href="{{ url('transaction/stockin/list') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-sign-in-alt"></i> Stock In</h4>
@@ -76,7 +76,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 mt-2">
-                    <a href="{{ url('transaction/stockreturn/create') }}" class="text-decoration-none text-dark">
+                    <a href="{{ url('transaction/stockreturn/list') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-exchange-alt"></i> Stock Return</h4>
@@ -92,7 +92,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-4 mt-2">
-                    <a href="{{ url('information/category/create') }}" class="text-decoration-none text-dark">
+                    <a href="{{ url('information/category/list') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-th-list"></i> Category</h4>
@@ -102,7 +102,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 mt-2">
-                    <a href="{{ url('information/location/create') }}" class="text-decoration-none text-dark">
+                    <a href="{{ url('information/location/list') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-location-arrow"></i> Location</h4>
@@ -112,7 +112,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 mt-2">
-                    <a href="{{ url('information/suppliers/create') }}" class="text-decoration-none text-dark">
+                    <a href="{{ url('information/suppliers/list') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
                                 <h4><i class="fas fa-user-tag"></i> Supplier</h4>
@@ -122,11 +122,11 @@
                     </a>
                 </div>
                 <div class="col-md-4 mt-2">
-                    <a href="{{ url('information/size/create') }}" class="text-decoration-none text-dark">
+                    <a href="{{ url('information/size/list') }}" class="text-decoration-none text-dark">
                         <div class="card bg-dark text-light border-20">
                             <div class="card-body px-4 py-4">
-                                <h4><i class="fas fa-tshirt"></i> Shirt Size</h4>
-                                Add size shirt here and list size
+                                <h4><i class="fa fa-archive"></i> Size Item</h4>
+                                Add size item here and list size
                             </div>
                         </div>
                     </a>

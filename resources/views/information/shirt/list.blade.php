@@ -15,17 +15,21 @@
         <div class="col-md-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Information</li>
-                    <li class="breadcrumb-item" aria-current="page">Size</li>
-                    <li class="breadcrumb-item"><a class="text-decoration-none text-danger" href="{{ url('information/size/create') }}">...</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">List</li>
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page" style="color:green;">List Item Size</li>
                 </ol>
             </nav>
         </div>
         <div class="col-md-12 mt-3">
-            <h4>List Size</h4>
+            <h4>List Item Size</h4>
             <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="float-end mb-3">
+                        <a href="{{ url('information/size/create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Create Item Size</a>
+                    </div>
+                </div>
+            </div>
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -43,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="input-group mb-3">
                         <input type="text" class="form-control" name="name" placeholder="exp. small" required>
-                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
                         </div>
                     </div>
                 </div>
